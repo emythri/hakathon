@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% comment %} <h2>Items in "{{ category }}" Category</h2> {% endcomment %}
+<ul>
+    {% for item in items %}
+        <li>
+            <strong>{{ item.title }}</strong> ({{ item.status|title }})<br>
+            Category:
+            <a href="{% url 'category_items' category=item.category %}">
+                {{ item.category }}
+            </a><br>
+            {{ item.description }}<br>
+            Location: {{ item.location }}<br>
+            Reported by: {{ item.reported_by.username }} on {{ item.date_reported|date:"Y-m-d H:i" }}
+        </li>
+        <hr>
+    {% empty %}
+        <li>No items found in this category.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock %}

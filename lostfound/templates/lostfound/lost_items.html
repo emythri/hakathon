@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lost Items</h2>
+<ul>
+    {% for item in items %}
+        <li>
+            <strong>{{ item.title }}</strong> ({{ item.category }})<br>
+            {{ item.description }}<br>
+            Location: {{ item.location }}<br>
+            Reported by: {{ item.reported_by.username }} on {{ item.date_reported|date:"Y-m-d H:i" }}<br>
+            <a href="{% url 'qr_for_category' item.category %}">📷 Show QR for "{{ item.category }}"</a>
+        </li>
+        <hr>
+    {% empty %}
+        <li>No lost items reported yet.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}">
+    <button class="btn btn-secondary mt-3">Back to Home</button>
+</a>
+{% endblock %}

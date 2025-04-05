@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - KLH Lost & Found{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Welcome to KLH Lost & Found</h2>
+
+<!-- Styled Buttons -->
+<div class="text-center">
+    <button class="custom-btn btn-primary mb-3" onclick="window.location.href='{% url 'add_item' %}'">
+        Report Lost/Found Item
+    </button><br>
+
+    <button class="custom-btn btn-secondary mb-3" onclick="window.location.href='{% url 'item_list' %}'">
+        View All Items
+    </button><br>
+
+    <button class="custom-btn btn-warning mb-3" onclick="window.location.href='{% url 'lost_items' %}'">
+        View Lost Items
+    </button><br>
+
+    <button class="custom-btn btn-success mb-3" onclick="window.location.href='{% url 'found_items' %}'">
+        View Found Items
+    </button>
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .custom-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: none;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        width: 250px;
+    }
+
+    .custom-btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-primary    { background-color: #0d6efd; }
+    .btn-secondary  { background-color: #6c757d; }
+    .btn-warning    { background-color: #ffc107; color: #212529; }
+    .btn-success    { background-color: #198754; }
+</style>
+{% endblock %}

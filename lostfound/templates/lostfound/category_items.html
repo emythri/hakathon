@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Items in "{{ category|title }}" Category</h2>
+
+    <ul class="list-group">
+        {% for item in items %}
+            <li class="list-group-item">
+                <strong>{{ item.title }}</strong> ({{ item.status|title }})<br>
+                <span class="text-muted">Category: {{ item.category }}</span><br>
+                {{ item.description }}<br>
+                <strong>Location:</strong> {{ item.location }}<br>
+                <strong>Reported by:</strong> {{ item.reported_by.username }} 
+                on {{ item.date_reported|date:"Y-m-d H:i" }}
+            </li>
+        {% empty %}
+            <li class="list-group-item text-danger">No items found in this category.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">← Back to Home</a>
+</div>
+{% endblock %}

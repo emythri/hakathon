@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 text-center">
+    <h2 class="mb-4">QR Code for "{{ category|title }}" Category</h2>
+
+    <img src="{{ qr_image }}" alt="QR Code" class="img-fluid mb-4" style="max-width: 300px;"><br>
+
+    <a href="{% url 'category_items' category %}" class="btn btn-primary">
+        View "{{ category }}" Items
+    </a>
+</div>
+{% endblock %}
